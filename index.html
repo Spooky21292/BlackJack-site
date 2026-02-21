@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BlackJack ₽ — мини-казино</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <h1>BlackJack ₽</h1>
+        <div class="balance-pill">Баланс: <span id="globalBalance">0</span> ₽</div>
+      </header>
+
+      <nav class="tabs" aria-label="Навигация">
+        <button class="tab-btn active" data-tab="blackjack">BlackJack</button>
+        <button class="tab-btn" data-tab="clicker">Кликер</button>
+        <button class="tab-btn" data-tab="rules">Правила</button>
+      </nav>
+
+      <main>
+        <section id="tab-blackjack" class="tab-panel active">
+          <div class="panel">
+            <h2>Стол BlackJack</h2>
+            <div class="bet-row">
+              <label for="betInput">Ставка (₽):</label>
+              <input id="betInput" type="number" min="1" step="1" placeholder="Введите ставку" />
+              <button id="startRoundBtn" class="btn primary">Сделать ставку / Начать</button>
+              <button id="newRoundBtn" class="btn" disabled>Новая раздача</button>
+            </div>
+
+            <div class="game-stats">
+              <div class="stat-card">Текущая ставка: <strong><span id="currentBet">0</span> ₽</strong></div>
+              <div class="stat-card">Сумма игрока: <strong><span id="playerTotal">0</span></strong></div>
+              <div class="stat-card">Сумма дилера: <strong><span id="dealerTotal">0</span></strong></div>
+            </div>
+
+            <div class="actions">
+              <button id="hitBtn" class="btn" disabled>Hit (Ещё)</button>
+              <button id="standBtn" class="btn" disabled>Stand (Хватит)</button>
+              <button id="doubleBtn" class="btn accent" disabled>Double (Удвоить)</button>
+            </div>
+
+            <div id="messageBox" class="message-box">Сделайте ставку, чтобы начать игру.</div>
+
+            <div class="table-area">
+              <div>
+                <h3>Дилер</h3>
+                <div id="dealerCards" class="cards"></div>
+              </div>
+              <div>
+                <h3>Игрок</h3>
+                <div id="playerCards" class="cards"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="tab-clicker" class="tab-panel">
+          <div class="panel">
+            <h2>Кликер ₽</h2>
+            <p class="muted">Нажимайте кнопку, чтобы зарабатывать виртуальные рубли.</p>
+            <button id="clickerBtn" class="clicker-btn">Клик!</button>
+            <div class="clicker-stats">
+              <div class="stat-card">Баланс: <strong><span id="clickerBalance">0</span> ₽</strong></div>
+              <div class="stat-card">Кликов за сессию: <strong><span id="sessionClicks">0</span></strong></div>
+              <div class="stat-card">Всего заработано кликами: <strong><span id="totalClickIncome">0</span> ₽</strong></div>
+            </div>
+            <div id="clickFxLayer" class="click-fx-layer" aria-hidden="true"></div>
+          </div>
+        </section>
+
+        <section id="tab-rules" class="tab-panel">
+          <div class="panel">
+            <h2>Правила</h2>
+            <ul class="rules-list">
+              <li>Цель BlackJack — набрать сумму карт ближе к 21, чем дилер, не перебрав 21.</li>
+              <li>Карты 2–10 дают номинал, J/Q/K = 10, туз считается как 1 или 11 (как выгоднее).</li>
+              <li>После раздачи можно взять карту (Hit), остановиться (Stand) или удвоить ставку (Double) на первых двух картах.</li>
+              <li>Дилер обязан добирать карты до 17 и останавливаться на 17+.</li>
+              <li>BlackJack на старте (туз + 10) платит 3:2, если у дилера нет BlackJack.</li>
+              <li>При равенстве сумм — Push, ставка возвращается.</li>
+              <li>Валюта ₽ в этом проекте полностью виртуальная: это игровые очки, не реальные деньги.</li>
+              <li>Проект учебный, без серверной части, все данные хранятся только в вашем браузере.</li>
+            </ul>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
